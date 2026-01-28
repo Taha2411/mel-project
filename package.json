@@ -1,7 +1,6 @@
 {
   "name": "mel-project",
-  "private": true,
-  "scripts": {},
-  "dependencies": {}
+  "private": true
 }
+
 
