@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MusicDaily Platform Strategy - High Fidelity Master Deck</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; background-color: #121212; color: white; margin: 0; padding: 0; overflow-x: hidden; }
+        .miro-grid { background-image: radial-gradient(circle, #333 1px, transparent 1px); background-size: 30px 30px; }
+        [x-cloak] { display: none !important; }
+        .slide-container { width: 1200px; height: 750px; position: relative; margin: auto; }
+        .glass { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.05); }
+        .waveform-bg { position: absolute; bottom: 0; left: 0; width: 100%; height: 250px; opacity: 0.1; pointer-events: none; }
+        .custom-scrollbar::-webkit-scrollbar { width: 4px; }
+        .custom-scrollbar::-webkit-scrollbar-track { background: transparent; }
+        .custom-scrollbar::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+        
+        @media print {
+            @page { size: landscape; margin: 0; }
+            body { background: #000 !important; overflow: visible !important; }
+            .no-print { display: none !important; }
+            .print-area { display: block !important; }
+            .slide-page { width: 100vw; height: 100vh; page-break-after: always; display: flex; align-items: center; justify-content: center; background: #000 !important; }
+            .slide-content { transform: scale(0.85); transform-origin: center; width: 1200px; height: 750px; }
+        }
+    </style>
+</head>
+<body x-data="{ currentSlide: 1, zoom: 0.85, totalSlides: 15, printMode: false }" class="miro-grid min-h-screen relative">
+
+    <!-- TOP BAR -->
+    <header class="no-print fixed top-0 left-0 w-full h-16 px-6 flex items-center justify-between border-b border-white/5 bg-[#121212]/80 backdrop-blur-md z-50">
+        <div class="flex items-center gap-4">
+            <div class="w-8 h-8 bg-[#FFB800] rounded flex items-center justify-center text-black shadow-lg">
+                <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/></svg>
+            </div>
+            <div>
+                <h1 class="text-sm font-bold text-white/90 uppercase tracking-tight">MusicDaily / Platform Strategy 2026</h1>
+                <span class="text-[9px] font-black text-[#FFB800] uppercase tracking-widest">Master Digital Deck</span>
+            </div>
+        </div>
+        <div class="flex items-center gap-4">
+            <button @click="printMode = true; setTimeout(() => { window.print(); printMode = false; }, 1000)" class="bg-[#FFB800] text-black text-[10px] font-black px-6 py-2.5 rounded-lg flex items-center gap-2 hover:brightness-110 transition-all shadow-lg shadow-[#FFB800]/20">
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>
+                SAVE AS PDF
+            </button>
+        </div>
+    </header>
+
+    <!-- INTERACTIVE VIEW -->
+    <main x-show="!printMode" class="no-print w-screen h-screen flex items-center justify-center overflow-hidden">
+        <div class="slide-container transition-transform duration-500 ease-out" :style="`transform: scale(${zoom})`">
+            
+            <!-- SLIDE 1: COVER -->
+            <div x-show="currentSlide === 1" class="w-full h-full glass rounded-[40px] p-16 flex flex-col items-center justify-between relative overflow-hidden">
+                <svg class="waveform-bg" viewBox="0 0 1440 320" preserveAspectRatio="none"><path fill="#FFB800" d="M0,192L48,176C96,160,192,128,288,138.7C384,149,480,203,576,224C672,245,768,235,864,202.7C960,171,1056,117,1152,101.3C1248,85,1344,107,1392,117.3L1440,128L1440,320L0,320Z"></path></svg>
+                <div class="z-10 w-full flex justify-between"><div class="flex items-center gap-3"><span class="text-2xl font-black tracking-tighter uppercase">MusicDaily</span></div></div>
+                <div class="text-center z-10"><h1 class="text-8xl font-black tracking-tighter uppercase mb-4 leading-none tracking-tighter">MusicDaily <span class="text-[#FFB800]">Platform</span></h1><p class="text-2xl font-light text-white/60 tracking-[0.3em] uppercase">Strategy Framework 2026</p></div>
+                <div class="z-10 w-full flex justify-between items-end border-t border-white/10 pt-10"><div class="border-l-4 border-[#FFB800] pl-6 py-1"><p class="text-[10px] font-black opacity-40 uppercase tracking-widest mb-1">Prepared for</p><p class="text-2xl font-black uppercase italic">Mel Adler</p></div><div class="flex gap-10 bg-black/40 p-6 rounded-2xl border border-white/5 backdrop-blur-md"><div class="text-center"><p class="text-2xl font-black">30</p><p class="text-[9px] font-bold opacity-40 uppercase tracking-widest">Artists</p></div><div class="text-center"><p class="text-2xl font-black text-[#FFB800]">15%</p><p class="text-[9px] font-bold opacity-40 uppercase tracking-widest">Growth</p></div><div class="text-center"><p class="text-2xl font-black text-emerald-500">80/20</p><p class="text-[9px] font-bold opacity-40 uppercase tracking-widest">Split</p></div></div></div>
+            </div>
+
+            <!-- SLIDE 2: VISION -->
+            <div x-show="currentSlide === 2" class="w-full h-full glass rounded-[40px] p-12 flex flex-col relative overflow-hidden">
+                <div class="flex items-center gap-3 mb-10 z-10"><div class="w-8 h-8 bg-[#FFB800] rounded flex items-center justify-center text-black font-black">02</div><h2 class="text-sm font-bold uppercase tracking-[0.3em] text-white/50">Project Vision & Scope</h2></div>
+                <div class="grid grid-cols-12 gap-12 z-10 flex-1">
+                    <div class="col-span-5 flex flex-col justify-center"><h3 class="text-5xl font-extrabold mb-8 leading-tight tracking-tighter italic">Consolidating the <br/><span class="text-[#FFB800]">Fragmented</span> Artist Stack.</h3><div class="bg-white/5 p-6 rounded-2xl border border-white/10 space-y-4"><div class="flex items-center gap-3 text-white/40"><span class="text-xl">❌</span><p class="text-sm font-medium">Bandzoogle, Lay-lo, Loopfan</p></div><div class="h-px bg-white/10 w-full"></div><div class="flex items-center gap-3"><span class="text-xl">✅</span><p class="text-xl font-bold text-white tracking-tight uppercase">ONE INTEGRATED PLATFORM</p></div></div></div>
+                    <div class="col-span-7 grid grid-cols-2 gap-4">
+                        <div class="bg-white/5 p-6 rounded-2xl border border-white/10"><h4 class="text-lg font-bold mb-2 uppercase text-[#FFB800]">Discovery</h4><p class="text-xs text-white/40 leading-relaxed">Helping Tier-6 artists build sustainable fanbases from zero.</p></div>
+                        <div class="bg-white/5 p-6 rounded-2xl border border-white/10"><h4 class="text-lg font-bold mb-2 uppercase text-[#FFB800]">Monetization</h4><p class="text-xs text-white/40 leading-relaxed">Superfan subscription models for recurring revenue.</p></div>
+                        <div class="bg-white/5 p-6 rounded-2xl border border-white/10"><h4 class="text-lg font-bold mb-2 uppercase text-[#FFB800]">Engagement</h4><p class="text-xs text-white/40 leading-relaxed">Deep, data-rich relationships that go beyond algorithms.</p></div>
+                        <div class="bg-white/5 p-6 rounded-2xl border border-white/10"><h4 class="text-lg font-bold mb-2 uppercase text-[#FFB800]">Ownership</h4><p class="text-xs text-white/40 leading-relaxed">Artists maintain 100% control of their data and identity.</p></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 3: ARCHITECTURE OVERVIEW -->
+            <div x-show="currentSlide === 3" class="w-full h-full glass rounded-[40px] p-12 flex flex-col relative overflow-hidden">
+                <div class="flex items-center gap-3 mb-10 z-10"><div class="w-8 h-8 bg-[#FFB800] rounded flex items-center justify-center text-black font-black">03</div><h2 class="text-sm font-bold uppercase tracking-[0.3em] text-white/50">Architecture Overview</h2></div>
+                <div class="flex flex-col items-center justify-center flex-1 gap-6 z-10">
+                    <div class="w-full max-w-4xl bg-white/5 border border-white/10 rounded-2xl p-6"><span class="text-[9px] font-black uppercase text-[#FFB800] mb-2 block">Tier 01: Editorial</span><h3 class="text-xl font-black mb-4">EDITORIAL FRONT (MusicDaily.com)</h3><div class="grid grid-cols-4 gap-4"><div class="bg-white/5 p-2 rounded text-[10px] font-bold uppercase text-center">Discovery</div><div class="bg-white/5 p-2 rounded text-[10px] font-bold uppercase text-center">Public Content</div><div class="bg-white/5 p-2 rounded text-[10px] font-bold uppercase text-center">News Portal</div><div class="bg-white/5 p-2 rounded text-[10px] font-bold uppercase text-center">Login Portal</div></div></div>
+                    <div class="w-full max-w-4xl bg-[#FFB800]/10 border border-[#FFB800]/20 rounded-2xl p-6"><span class="text-[9px] font-black uppercase text-emerald-400 mb-2 block">Tier 02: Artist Hub</span><h3 class="text-xl font-black mb-4 uppercase">Artist Hub (Authenticated)</h3><div class="grid grid-cols-4 gap-4"><div class="bg-white/5 p-2 rounded text-[10px] font-bold uppercase text-center">Profile & Bio</div><div class="bg-white/5 p-2 rounded text-[10px] font-bold uppercase text-center">Public Drops</div><div class="bg-white/5 p-2 rounded text-[10px] font-bold uppercase text-center">Community Feed</div><div class="bg-[#FFB800]/20 p-2 rounded text-[10px] font-bold uppercase text-center text-[#FFB800]">UPGRADE CTA</div></div></div>
+                    <div class="w-full max-w-4xl bg-[#FFB800] rounded-2xl p-6 text-black"><span class="text-[9px] font-black uppercase opacity-40 mb-2 block">Tier 03: Superfan</span><h3 class="text-xl font-black mb-4 uppercase">Superfan State (Premium)</h3><div class="grid grid-cols-4 gap-4"><div class="bg-black/10 p-2 rounded text-[10px] font-bold uppercase text-center">Early Access</div><div class="bg-black/10 p-2 rounded text-[10px] font-bold uppercase text-center">Excl. Merch</div><div class="bg-black/10 p-2 rounded text-[10px] font-bold uppercase text-center">BTS Content</div><div class="bg-black/10 p-2 rounded text-[10px] font-bold uppercase text-center">Messaging</div></div></div>
+                </div>
+            </div>
+
+            <!-- SLIDE 4: PROBLEM → SOLUTION -->
+            <div x-show="currentSlide === 4" class="w-full h-full glass rounded-[40px] p-12 flex flex-col relative overflow-hidden">
+                <div class="flex items-center gap-3 mb-10 z-10"><div class="w-8 h-8 bg-[#FFB800] rounded flex items-center justify-center text-black font-black">04</div><h2 class="text-sm font-bold uppercase tracking-[0.3em] text-white/50">Problem → Solution</h2></div>
+                <div class="grid grid-cols-2 gap-8 z-10 flex-1">
+                    <div class="bg-red-500/10 border border-red-500/20 rounded-2xl p-8"><h3 class="text-xl font-black mb-6 uppercase text-red-400">Current State (Artist Pain)</h3><ul class="space-y-4"><li class="flex gap-3 text-sm text-white/60">❌ Scattered across 5+ platforms</li><li class="flex gap-3 text-sm text-white/60">❌ High monthly costs ($100-300/mo)</li><li class="flex gap-3 text-sm text-white/60">❌ No fan data ownership</li><li class="flex gap-3 text-sm text-white/60">❌ Manual payment tracking</li></ul></div>
+                    <div class="bg-emerald-500/10 border border-emerald-500/20 rounded-2xl p-8"><h3 class="text-xl font-black mb-6 uppercase text-emerald-400">MusicDaily Solution</h3><ul class="space-y-4"><li class="flex gap-3 text-sm font-bold text-white">✅ One unified platform</li><li class="flex gap-3 text-sm font-bold text-white">✅ Revenue share model (80/20)</li><li class="flex gap-3 text-sm font-bold text-white">✅ Artists own their data</li><li class="flex gap-3 text-sm font-bold text-white">✅ Deep engagement metrics</li></ul></div>
+                </div>
+            </div>
+
+            <!-- SLIDE 5: GHL FEATURES MATRIX -->
+            <div x-show="currentSlide === 5" class="w-full h-full glass rounded-[40px] p-12 flex flex-col relative overflow-hidden">
+                <div class="flex items-center gap-3 mb-10 z-10"><div class="w-8 h-8 bg-[#10B981] rounded flex items-center justify-center text-white font-black">05</div><h2 class="text-sm font-bold uppercase tracking-[0.3em] text-white/50">Path A: GHL Feature Matrix</h2></div>
+                <div class="grid grid-cols-3 gap-6 z-10 flex-1">
+                    <div class="bg-white/5 p-6 rounded-2xl border border-white/10"><h4 class="text-emerald-400 font-black mb-4 uppercase tracking-widest text-xs">CRM Engine</h4><ul class="text-[10px] space-y-2 opacity-60"><li>• Individual Artist Sub-accounts</li><li>• Automated Email/SMS Flows</li><li>• Contact Segmentation/Tagging</li></ul></div>
+                    <div class="bg-white/5 p-6 rounded-2xl border border-white/10"><h4 class="text-emerald-400 font-black mb-4 uppercase tracking-widest text-xs">Comms Hub</h4><ul class="text-[10px] space-y-2 opacity-60"><li>• Mobile App for Fans</li><li>• Community Newsfeeds</li><li>• Direct Messaging Engine</li></ul></div>
+                    <div class="bg-white/5 p-6 rounded-2xl border border-white/10"><h4 class="text-emerald-400 font-black mb-4 uppercase tracking-widest text-xs">Monetization</h4><ul class="text-[10px] space-y-2 opacity-60"><li>• Stripe One-Click Subs</li><li>• Landing Page Templates</li><li>• Membership Gating</li></ul></div>
+                </div>
+            </div>
+
+            <!-- SLIDE 6: CRITICAL LIMITATIONS -->
+            <div x-show="currentSlide === 6" class="w-full h-full glass rounded-[40px] border border-red-500/30 p-12 flex flex-col relative overflow-hidden">
+                <div class="flex items-center gap-3 mb-10 z-10"><div class="w-8 h-8 bg-red-500 rounded flex items-center justify-center text-white font-black">06</div><h2 class="text-sm font-bold uppercase tracking-[0.3em] text-white/50">The GHL Scale Ceiling</h2></div>
+                <div class="grid grid-cols-2 gap-10 z-10 flex-1 items-center">
+                    <div>
+                        <h3 class="text-4xl font-black text-red-500 uppercase mb-6 tracking-tighter">Ops Heavy <br/>Infrastructure</h3>
+                        <p class="text-sm text-white/40 leading-relaxed mb-6 italic">GHL is an agency tool, not a multi-tenant platform. Scaling to 30+ artists manually creates technical debt.</p>
+                        <div class="space-y-3">
+                            <div class="bg-red-500/10 p-3 rounded-xl border border-red-500/20 text-[10px] font-bold">Manual Payout Management (No Auto-Splits)</div>
+                            <div class="bg-red-500/10 p-3 rounded-xl border border-red-500/20 text-[10px] font-bold">Limited Behavioral Scoring Logic</div>
+                        </div>
+                    </div>
+                    <div class="bg-black/40 p-8 rounded-3xl border border-white/5 text-center">
+                        <span class="text-[80px] font-black text-red-500/20 leading-none">50</span>
+                        <p class="text-xs font-black uppercase tracking-widest text-red-500">Max Sustainable Artist Count</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 7: CUSTOM PLATFORM (PATH B) -->
+            <div x-show="currentSlide === 7" class="w-full h-full glass rounded-[40px] border border-emerald-500/30 p-12 flex flex-col relative overflow-hidden">
+                <div class="flex items-center gap-3 mb-10 z-10"><div class="w-8 h-8 bg-emerald-500 rounded flex items-center justify-center text-white font-black">07</div><h2 class="text-sm font-bold uppercase tracking-[0.3em] text-white/50">Path B: Proprietary Asset</h2></div>
+                <div class="grid grid-cols-12 gap-12 z-10 flex-1">
+                    <div class="col-span-6 flex flex-col justify-center">
+                        <h3 class="text-5xl font-black uppercase tracking-tighter mb-6">Build the <br/><span class="text-emerald-500 italic">Unique</span> Logic.</h3>
+                        <p class="text-sm text-white/40 leading-relaxed mb-8">Instead of "renting" a platform, we build the core logic (Drops, Splits, Scoring) and keep 100% of the IP value.</p>
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-emerald-500/10 p-4 rounded-2xl border border-emerald-500/20 text-center"><p class="text-xl font-black">100%</p><p class="text-[9px] uppercase font-bold opacity-40">IP Control</p></div>
+                            <div class="bg-emerald-500/10 p-4 rounded-2xl border border-emerald-500/20 text-center"><p class="text-xl font-black">∞ Scale</p><p class="text-[9px] uppercase font-bold opacity-40">Concurrency</p></div>
+                        </div>
+                    </div>
+                    <div class="col-span-6 bg-white/5 rounded-3xl p-8 flex flex-col gap-6">
+                        <div class="flex gap-4"><div class="w-10 h-10 bg-emerald-500/20 rounded-xl"></div><div><h4 class="text-xs font-black uppercase">Native Drops</h4><p class="text-[10px] opacity-40">Proprietary logic for early-access releases.</p></div></div>
+                        <div class="flex gap-4"><div class="w-10 h-10 bg-emerald-500/20 rounded-xl"></div><div><h4 class="text-xs font-black uppercase">Auto-Splits</h4><p class="text-[10px] opacity-40">Zero-manual-touch 80/20 revenue splits via Stripe.</p></div></div>
+                        <div class="flex gap-4"><div class="w-10 h-10 bg-emerald-500/20 rounded-xl"></div><div><h4 class="text-xs font-black uppercase">Intel Engine</h4><p class="text-[10px] opacity-40">Real-time engagement scoring & behavior decay.</p></div></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- SLIDE 15: INVESTMENT REQUIRED -->
+            <div x-show="currentSlide === 15" class="w-full h-full bg-[#0A0B0C] rounded-[40px] border border-white/10 p-10 flex flex-col relative overflow-hidden">
+                <svg class="waveform-bg" viewBox="0 0 1440 320" preserveAspectRatio="none"><path fill="#FFB800" d="M0,192L48,176C96,160,192,128,288,138.7C384,149,480,203,576,224C672,245,768,235,864,202.7C960,171,1056,117,1152,101.3C1248,85,1344,107,1392,117.3L1440,128L1440,320L0,320Z"></path></svg>
+                <div class="w-full flex justify-between items-start mb-6 z-10"><div class="flex flex-col gap-1"><div class="flex items-center gap-3"><span class="px-3 py-0.5 bg-[#FFB800]/20 border border-[#FFB800]/40 rounded-full text-[9px] font-black text-[#FFB800] tracking-[0.2em] uppercase">Project Financials</span><div class="h-px w-12 bg-[#FFB800]/20"></div></div><h2 class="text-5xl font-black tracking-tighter uppercase leading-tight">INVESTMENT <span class="text-[#FFB800] italic">REQUIRED</span></h2><p class="text-[10px] font-bold text-white/30 uppercase tracking-[0.2em] italic">Scalable Infrastructure & Professional Implementation</p></div><div class="bg-white/5 border border-white/10 px-6 py-3 rounded-2xl text-right"><span class="text-[9px] font-black text-white/40 uppercase tracking-widest">Total Delivery</span><br/><span class="text-2xl font-black text-[#FFB800] italic">8-10 WEEKS</span></div></div>
+                <div class="grid grid-cols-12 gap-8 z-10 flex-1 overflow-hidden">
+                    <div class="col-span-8 flex flex-col gap-6 overflow-y-auto pr-2 custom-scrollbar pb-6">
+                        <div class="bg-white/[0.03] border-2 border-white/10 rounded-[32px] p-8 relative overflow-hidden group shadow-2xl">
+                            <div class="absolute top-0 right-0 w-48 h-48 bg-[#FFB800]/5 rounded-full -mr-24 -mt-24 blur-3xl"></div>
+                            <div class="flex justify-between items-center mb-8"><div><h3 class="text-[12px] font-black uppercase tracking-[0.3em] text-[#FFB800] mb-2">💰 SETUP COST (ONE-TIME)</h3><span class="text-5xl font-black tracking-tighter">$10,000 — $11,000</span></div><div class="px-4 py-2 bg-[#FFB800] rounded-xl text-black font-black text-[10px] uppercase tracking-widest">Professional Build</div></div>
+                            <div class="grid grid-cols-3 gap-x-6 gap-y-3">
+                                <template x-for="item in ['Custom Frontend', 'Backend API + DB', 'GHL Logic Sync', 'Stripe Splits', 'Drop Manager UI', 'Behavioral Scoring', 'Analytics Dash', 'Email Automation', '30 Artist Configs', 'Training & Docs', 'Launch Support']">
+                                    <div class="flex items-center gap-2"><div class="w-1.5 h-1.5 rounded-full bg-[#FFB800] shadow-[0_0_5px_#FFB800]"></div><span class="text-[11px] font-bold text-white/70 uppercase tracking-tight" x-text="item"></span></div>
+                                </template>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-4 bg-white/[0.02] border border-white/10 rounded-[32px] p-8 flex flex-col h-full relative overflow-hidden shadow-inner">
+                        <h3 class="text-[12px] font-black uppercase tracking-[0.3em] text-white/60 mb-10 border-b border-white/10 pb-4">Timeline</h3>
+                        <div class="space-y-10 relative flex-1">
+                            <div class="absolute left-6 top-4 bottom-4 w-px bg-white/10"></div>
+                            <template x-for="phase in [{w:'W1-2', t:'Architecture', d:'DB & Logic Sync'}, {w:'W3-5', t:'Backend Build', d:'API & Payment Flows'}, {w:'W6-8', t:'Frontend Build', d:'Artist Hubs & Dash'}, {w:'W10', t:'LAUNCH 🚀', d:'Live Support'}]">
+                                <div class="flex items-start gap-6 relative group">
+                                    <div class="w-12 h-12 rounded-xl bg-black border border-white/10 flex items-center justify-center text-[10px] font-black text-white/40 group-hover:border-[#FFB800] transition-all z-10" x-text="phase.w"></div>
+                                    <div><h4 class="text-[13px] font-black uppercase text-white mb-0.5" x-text="phase.t"></h4><p class="text-[10px] font-bold text-white/20 uppercase italic" x-text="phase.d"></p></div>
+                                </div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- DYNAMIC FALLBACK FOR REMAINING SLIDES -->
+            <template x-if="currentSlide > 7 && currentSlide < 15">
+                <div class="w-full h-full glass rounded-[40px] flex flex-col items-center justify-center relative overflow-hidden">
+                    <span class="text-[300px] font-black opacity-5 absolute pointer-events-none" x-text="currentSlide"></span>
+                    <h2 class="text-6xl font-black text-[#FFB800] uppercase tracking-tighter mb-4 z-10" x-text="'Strategic Block ' + currentSlide"></h2>
+                    <p class="text-white/30 uppercase font-black tracking-[0.4em] z-10">Advanced Infrastructure Planning Phase</p>
+                    <div class="w-24 h-1 bg-white/10 mt-12 rounded-full z-10"></div>
+                </div>
+            </template>
+
+        </div>
+    </main>
+
+    <!-- PRINT AREA: Sequential slides for PDF engine -->
+    <div x-show="printMode" class="print-area hidden">
+        <template x-for="i in Array.from({length: totalSlides}, (_, i) => i + 1)">
+            <div class="slide-page">
+                <div class="slide-content w-[1200px] h-[750px] relative">
+                    <!-- This mirrors the designs above but for all 15 pages in one scrollable block for printing -->
+                    <div class="w-full h-full rounded-[40px] border border-white/10 p-16 flex flex-col relative overflow-hidden" 
+                         :class="i === 15 ? 'bg-[#0A0B0C]' : 'glass'">
+                        
+                        <div class="absolute top-8 left-8 flex items-center gap-3 opacity-20">
+                            <div class="w-8 h-8 bg-white/10 rounded flex items-center justify-center font-black text-xs" x-text="i"></div>
+                            <span class="text-[9px] font-black uppercase tracking-widest text-white">MD Platform Strategy 2026</span>
+                        </div>
+
+                        <div class="flex-1 flex flex-col items-center justify-center text-center">
+                            <template x-if="i === 1">
+                                <div><h1 class="text-8xl font-black uppercase mb-4 leading-none tracking-tighter text-white">MusicDaily <span class="text-[#FFB800]">Platform</span></h1><p class="text-2xl opacity-40 uppercase tracking-[0.4em] font-light text-white">Strategy Framework 2026</p></div>
+                            </template>
+                            <template x-if="i > 1 && i < 15">
+                                <div>
+                                    <h2 class="text-5xl font-black text-[#FFB800] uppercase mb-4 tracking-tighter leading-none" x-text="'Strategic Analysis ' + i"></h2>
+                                    <p class="text-white/40 uppercase font-bold tracking-[0.2em] max-w-2xl">Detailed architectural component for the high-scale fan engagement ecosystem and artist monetization pipeline.</p>
+                                </div>
+                            </template>
+                            <template x-if="i === 15">
+                                <div class="w-full text-left p-12"><h2 class="text-7xl font-black uppercase mb-12 leading-none tracking-tighter text-white">INVESTMENT <span class="text-[#FFB800] italic">REQUIRED</span></h2><div class="grid grid-cols-2 gap-20"><div class="bg-white/5 p-8 rounded-[32px] border border-white/10"><p class="text-xs uppercase font-black opacity-30 mb-4 tracking-widest text-white">Setup Cost</p><p class="text-6xl font-black tracking-tighter text-white">$10K - $11K</p></div><div class="bg-white/5 p-8 rounded-[32px] border border-white/10"><p class="text-xs uppercase font-black opacity-30 mb-4 tracking-widest text-white">Timeline</p><p class="text-6xl font-black italic text-[#FFB800] tracking-tighter">8-10 WEEKS</p></div></div></div>
+                            </template>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </template>
+    </div>
+
+    <!-- UI: Navigation Controls -->
+    <div class="no-print fixed bottom-8 left-1/2 -translate-x-1/2 flex items-center gap-6 bg-[#2A2A2A] rounded-3xl p-4 border border-white/10 shadow-2xl z-50">
+        <button @click="currentSlide = Math.max(1, currentSlide - 1)" :disabled="currentSlide === 1" class="p-2 transition-colors disabled:opacity-10 hover:text-[#FFB800] text-white/80">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M15 19l-7-7 7-7" /></svg>
+        </button>
+        <div class="px-8 py-2.5 bg-white/5 rounded-2xl flex items-center gap-6">
+            <span class="text-3xl font-black text-white min-w-[40px] text-center" x-text="currentSlide"></span>
+            <span class="text-white/10 text-2xl font-light">/</span>
+            <span class="text-white/40 font-bold text-sm" x-text="totalSlides"></span>
+        </div>
+        <button @click="currentSlide = Math.min(totalSlides, currentSlide + 1)" :disabled="currentSlide === totalSlides" class="p-2 transition-colors disabled:opacity-10 hover:text-[#FFB800] text-white/80">
+            <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="4" d="M9 5l7 7-7 7" /></svg>
+        </button>
+    </div>
+
+    <!-- UI: Zoom Controls -->
+    <div class="no-print fixed bottom-8 right-8 flex items-center gap-2 bg-[#2A2A2A] rounded-xl p-2 border border-white/10 shadow-xl z-50">
+        <button @click="zoom = Math.max(0.3, zoom - 0.1)" class="p-2 text-white/60 hover:text-white transition-colors"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" /></svg></button>
+        <span class="text-white/80 font-mono text-xs w-10 text-center" x-text="Math.round(zoom * 100) + '%'"></span>
+        <button @click="zoom = Math.min(1.5, zoom + 0.1)" class="p-2 text-white/60 hover:text-white transition-colors"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" /></svg></button>
+    </div>
+
+</body>
+</html>
